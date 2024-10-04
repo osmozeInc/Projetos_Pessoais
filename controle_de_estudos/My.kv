@@ -1,0 +1,117 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+ScreenManager:
+    id: screen_manager
+    Screen_Login:
+        name: 'login'
+    Screen_Forgot_Password:
+        name: 'forgot_password'
+#
+<Image_logo@Image>:
+    allow_stretch: True
+    keep_ratio: True
+    size_hint: 0.8, 0.8
+    pos_hint: {'center_x': 0.5,}
+    padding: 0, 0, 0, 30
+#
+<Label_login@Label>:
+    color: 1, 1, 1, 1
+    font_size: 15
+    halign: 'left'
+    text_size: self.size
+    padding: 0, 0, 0, 7
+#
+<TextInput_login@TextInput>:
+    color: 1, 1, 1, 1
+    size_hint: 1, 0.6
+    font_size: 20
+    multiline: False
+    halign: 'center'
+    valing: 'center'
+
+#
+<Button_login@Button>:
+    color: get_color_from_hex('#212121')
+    font_size: 15
+    background_color: 0, 0, 0, 0
+    background_normal: ''
+    size_hint: 1, 0.6
+#
+<Screen_Login>:
+    name: 'login'
+    Background_padrao:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [0, 20, 0, 20]
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        size_hint: 0.8, 0.6
+    #
+        Image_logo:
+            source: ".\Images\CourseMate.png"
+        #
+        Widget:
+            size_hint: 1, 0.4
+        #
+        Label_login:
+            text: "Nome de usuário"
+        TextInput_login:
+        #
+        Label_login:
+            text: "Senha"
+        TextInput_login:
+            password: True
+        #
+        Widget:
+            size_hint: 1, 0.6
+        #
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+            padding: 0, 0, 0, 0
+        #
+            Button_login:
+                text: "Criar perfil"
+                on_press: self.canvas.before.children[0].rgba = get_color_from_hex('#d68e1c')
+                on_release: app.root.current = 'new_user'
+                canvas.before:
+                    Color:
+                        rgba: get_color_from_hex('#f29e23')
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [8]
+            #
+            Button_login:
+                text: "Entrar"
+                on_press: self.canvas.before.children[0].rgba = get_color_from_hex('#d68e1c')
+                on_release: app.root.current = 'home'
+                canvas.before:
+                    Color:
+                        rgba: get_color_from_hex('#58bceb')
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [8]
+#
+        Button:
+            text: "esqueceu a senha?"
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 0, 0
+            on_press: app.root.current = 'forgot_password'
+
+
+<Screen_Forgot_Password>:
+    name: "forgot_password"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: get_color_from_hex('#212121')
+            Rectangle:
+                size: self.size
+        #
+
+        Label:
+            text: "Recuperar senha"
+            font_size: 20
+            color: 1, 1, 1, 1
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}

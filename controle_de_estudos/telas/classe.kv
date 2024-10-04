@@ -1,0 +1,8 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+<Background_padrao@Widget>:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('#212121')
+        Rectangle:
+            size: self.size
