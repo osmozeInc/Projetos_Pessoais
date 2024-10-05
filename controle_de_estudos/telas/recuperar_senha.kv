@@ -1,16 +1,57 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
 
 <Screen_Forgot_Password>:
     name: "forgot_password"
-    FloatLayout:
-        canvas.before:
-            Color:
-                rgba: get_color_from_hex('#212121')
-            Rectangle:
-                size: self.size
+    Background_padrao:
+    BoxLayout:
+        orientation: "vertical"
+        padding: [0, 20, 0, 20]
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        size_hint: 0.7, 0.6
+    #
+        Image_logo:
+            source: ".\Images\CourseMate.png"
         #
-
         Label:
-            text: "Recuperar senha"
-            font_size: 20
+            text: "Recuperação de senha"
+            font_size: 28
+            bold: True
+            color: 1, 1, 1, 1        
+        #
+        Label:
+            text: "Vamos enviar um e-mail de recuperação de senha para você, fique atento!\n\nCrie uma nova senha, salve e volte para o APP."
+            font_size: 15
             color: 1, 1, 1, 1
-            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            halign: 'left'
+            valing: 'top'
+            text_size: self.size
+        #
+        Widget:
+            size_hint: 1, 0.8
+        #
+        TextInput:
+            id: email
+            multiline: False
+            hint_text: "E-mail"
+            size_hint: 1, 0.4
+            font_size: 15
+            valing: 'center'
+        #
+        Widget:
+            size_hint: 1, 0.4
+        #
+        Button_login:
+            text: "Enviar e-mail"
+            font_size: 15
+            on_press: root.Enviar_Email_Recuperacao(email.text)
+            on_release: app.root.current = 'login'
+            size_hint: 0.7, 0.4
+            pos_hint: {'center_x': 0.5}
+            canvas.before:
+                Color:
+                    rgba: get_color_from_hex('#f29e23')
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [8]
+        #

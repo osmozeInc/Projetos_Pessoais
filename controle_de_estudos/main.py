@@ -3,8 +3,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from Python.home import Screen_Home
 from kivy.lang import Builder
+from Python.email_manager import *
 
 Builder.load_file('telas/classe.kv')
+Builder.load_file('telas/recuperar_senha.kv')
 
 class MyApp(App):
     def build(self):
@@ -26,7 +28,16 @@ class Screen_New_User(Screen):
 class Screen_Forgot_Password(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        print("TelaForgotPassword inicializada")
+
+    def Enviar_Email_Recuperacao(self, email_client):
+        ok = validar_email(email_client)
+        if ok:
+            Email_de_Recuperacao.Enviar_Email_Recuperacao(email_client)
+        else:
+            print('Email inválido')
+
+
+        
 
 
 

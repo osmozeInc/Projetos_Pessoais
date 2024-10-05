@@ -1,8 +1,42 @@
 #: import get_color_from_hex kivy.utils.get_color_from_hex
 
+#       TELA DE FUNDO
 <Background_padrao@Widget>:
     canvas.before:
         Color:
             rgba: get_color_from_hex('#212121')
         Rectangle:
             size: self.size
+
+#       LABELS
+<Label_login@Label>:
+    color: 1, 1, 1, 1
+    font_size: 15
+    halign: 'left'
+    text_size: self.size
+    padding: 0, 0, 0, 7
+
+#       BUTTONS
+<Button_login@Button>:
+    color: get_color_from_hex('#212121')
+    font_size: 15
+    background_color: 0, 0, 0, 0
+    background_normal: ''
+    size_hint: 1, 0.6
+
+#       TEXT INPUT
+<TextInput_login@TextInput>:
+    color: 1, 1, 1, 1
+    size_hint: 1, 0.6
+    font_size: 20
+    multiline: False
+    halign: 'center'
+    valing: 'center'
+
+#       IMAGENS
+<Image_logo@Image>:
+    allow_stretch: True
+    keep_ratio: True
+    size_hint: 0.8, 0.8
+    pos_hint: {'center_x': 0.5,}
+    padding: 0, 0, 0, 30
