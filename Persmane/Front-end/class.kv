@@ -1,0 +1,50 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#
+# 
+# ELEMENTOS PRINCIPAIS
+# 
+<Background_Class@Widget>:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex('#212121')
+        Rectangle:
+            size: self.size
+#
+<Head_BoxLayot_Class@BoxLayout>
+    orientation: 'horizontal'
+    size_hint: 0.9, 0.1
+    spacing: self.width * 0.7
+    pos_hint: {'center_x': 0.5,'center_y': 0.9}
+#
+#
+# BOTÕES
+#
+<Navbar_Button_Class@Button>:
+    background_color: 1, 1, 1, 0
+    font_size: 20
+#
+<Head_Button_Class@Button>
+    font_size: 17
+    color: 1, 1, 1, 1
+    background_color: 1, 0, 0, 1
+    pos_hint: {'center_x': 0.95,'center_y': 0.95}
+    size_hint: self.width * 0.1, 1
+#
+#
+# FORMAS DO DESIGN
+#
+<Line_Navbar_Class@Widget>:
+    canvas:
+        Color:
+            rgba: 1, 0.5, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+#
+<Patirtion_Line_Class@Widget>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Line:
+            point: 
+            size: 

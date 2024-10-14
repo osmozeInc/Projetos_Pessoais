@@ -1,0 +1,25 @@
+<Task>:
+    name: 'tarefas'
+    Background_Class:
+    Head_BoxLayot_Class:
+        Label:
+            text: 'Tarefas'
+            font_size: 18
+            color: 1, 1, 1, 1
+            pos_hint: {'center_x': 0.05,'center_y': 0.95}
+            size_hint: self.width * 0.1, 0
+        Head_Button_Class:
+            text: 'Nova tarefa'
+            on_press: root.Create_New_Task()
+
+
+
+<New_Task>:
+    name: 'new_task'
+    Background_Class:
+    Label:
+        text: 'Nova Tarefa'
+        font_size: 40
+        pos_hint: {'center_x': 0.15,'center_y': 0.9}
+        bold: True
+    Patirtion_Line_Class:
