@@ -1,12 +1,16 @@
 ScreenManager:
     Task:
         name: 'task'
-    New_Task:
-        name: 'new_task'
     Reminder:
         name: 'reminder'
     Project:
         name: 'project'
+    New_Task:
+        name: 'new_task'
+    New_Reminder:
+        name: 'new_reminder'
+    New_Project:
+        name: 'new_project'
 # c
 
 <NavigationBar>:
@@ -18,11 +22,11 @@ ScreenManager:
         size_hint: 1, 0.5
 
         Navbar_Button_Class:
-            text: 'Tarefas'
-            on_release: root.Press_Task()
-        Navbar_Button_Class:
             text: 'Lembretes'
             on_release: root.Press_Reminder()
+        Navbar_Button_Class:
+            text: 'Tarefas'
+            on_release: root.Press_Task()
         Navbar_Button_Class:
             text: 'Projetos'
             on_release: root.Press_Project()
@@ -32,9 +36,9 @@ ScreenManager:
         size_hint: 1, 0.05
     
         Line_Navbar_Class:
-            id: task_line
-        Line_Navbar_Class:
             id: reminder_line
+        Line_Navbar_Class:
+            id: task_line
         Line_Navbar_Class:
             id: project_line
 

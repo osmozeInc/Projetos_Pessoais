@@ -1,7 +1,63 @@
 <Reminder>:
     name: 'reminder'
-    canvas.before:
-        Color:
-            rgba: 0, 1, 0, 1
-        Rectangle:
-            size: self.size
+    Background_Class:
+    Head_BoxLayot_Class:
+        Head_Label_Class:
+            text: 'Lembretes'
+        Head_Button_Class:
+            text: 'Novo Lembrete'
+            on_press: root.Create_New_Reminder()
+
+
+
+<New_Reminder>:
+    name: 'new_remeinder'
+
+    Background_Class:
+
+    New_Thing_Label_Class:
+        text: 'Novo Lembrete'
+    New_Thing_Line_Class:
+
+    SaveCancel_New_Thing_BoxLayot_Class:
+
+        SaveCancel_Ting_Button_Class:
+            color: 1, 1, 1, 1
+            text: 'Cancelar'
+            on_press: root.Cancel_New_Reminder()
+
+        SaveCancel_Ting_Button_Class:
+            color: 1, 1, 1, 1
+            text: 'Salvar'
+            on_press: root.Save_New_Reminder(title_new_reminder.text, date_new_reminder.text, time_new_reminder.text, description_new_reminder.text, link_new_reminder.text)
+    #
+
+    New_Thing_BoxLayot_Class:
+        
+        New_Thing_TextInput_Class:
+            id: title_new_reminder
+            hint_text: "Título"
+
+        New_Thing_TextInput_Class:
+            id: date_new_reminder
+            hint_text: 'Data (digite apenas números)'
+            input_filter: 'int'
+            on_text_validate: root.Validate_Date(self)
+
+
+        New_Thing_TextInput_Class:
+            id: time_new_reminder
+            hint_text: 'Adiamento'
+    #
+    New_Thing_BoxLayot_Class:
+        pos_hint: {'x': 0.2,'center_y': 0.4}
+
+        New_Thing_TextInput_Class:
+            id: description_new_reminder
+            hint_text: 'Descrição'
+            size_hint_y: 1
+
+        New_Thing_TextInput_Class:
+            id: link_new_reminder
+            hint_text: 'Link'
+            size_hint: 0.435, 0.4

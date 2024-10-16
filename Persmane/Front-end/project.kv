@@ -1,7 +1,17 @@
 <Project>:
     name: 'project'
-    canvas.before:
-        Color:
-            rgba: 0, 0, 1, 1
-        Rectangle:
-            size: self.size
+    Background_Class:
+    Head_BoxLayot_Class:
+        Head_Label_Class:
+            text: 'Projetos'
+        Head_Button_Class:
+            text: 'Novo Projeto'
+            on_press: root.Create_New_Project()
+
+
+<New_Project>:
+    name: 'new_project'
+    Background_Class:
+    New_Thing_Label_Class:
+        text: 'Novo Projeto'
+    New_Thing_Line_Class:
