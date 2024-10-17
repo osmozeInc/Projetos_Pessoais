@@ -29,7 +29,7 @@
         SaveCancel_Ting_Button_Class:
             color: 1, 1, 1, 1
             text: 'Salvar'
-            on_press: root.Save_New_Reminder(title_new_reminder.text, date_new_reminder.text, time_new_reminder.text, description_new_reminder.text, link_new_reminder.text)
+            on_press: root.Save_New_Reminder(title_new_reminder, date_new_reminder, time_new_reminder, description_new_reminder, link_new_reminder)
     #
 
     New_Thing_BoxLayot_Class:
@@ -37,6 +37,7 @@
         New_Thing_TextInput_Class:
             id: title_new_reminder
             hint_text: "Título"
+            on_text_validate: root.Validate_Title(self)
 
         New_Thing_TextInput_Class:
             id: date_new_reminder
@@ -47,7 +48,9 @@
 
         New_Thing_TextInput_Class:
             id: time_new_reminder
-            hint_text: 'Adiamento'
+            hint_text: 'Adiamento (em minutos)'
+            input_filter: 'int'
+            on_text_validate: root.Validate_Time(self)
     #
     New_Thing_BoxLayot_Class:
         pos_hint: {'x': 0.2,'center_y': 0.4}
@@ -56,6 +59,8 @@
             id: description_new_reminder
             hint_text: 'Descrição'
             size_hint_y: 1
+            multiline: True
+            on_text_validate: root.Validate_Description(self)
 
         New_Thing_TextInput_Class:
             id: link_new_reminder

@@ -88,22 +88,52 @@ class New_Reminder(Screen):
         sm.current = 'reminder'
     
     def Save_New_Reminder(self, name, date, time, description, link):
-        sm.current = 'reminder'
+        check = 0
+        self.Validate_Title(name)
+        check += self.Validate_Date(date)
+        check += self.Validate_Time(time)
+        self.Validate_Description(description)
 
+        if check == 0:
+            #salvar no banco de dados
+            sm.current = 'reminder'
+        else:
+            pass
+
+
+
+
+        
+
+    def Validate_Title(self, instance):
+        if len(instance.text) > 40:
+            instance.text = instance.text[:40]
+        
     def Validate_Date(self, instance):
         text = instance.text
 
         if len(text) > 8:
             instance.text = text[:8]
-
-        if len(text) == 8:
-            instance.text = text[:2] + '/' + text[2:4] + '/' + text[4:]
+            text = text[:8]
 
         if len(text) < 8:
             instance.text = ''
             self.ids.date_new_reminder.hint_text = 'Data invalida, repita'
+            return 0
 
-        
+        if len(text) == 8:
+            instance.text = text[:2] + '/' + text[2:4] + '/' + text[4:]
+
+    def Validate_Time(self, instance):
+        if instance.text > 1000:
+            instance.text = 'Tempo muito grande'
+            return 0
+
+    def Validate_Description(self, instance):
+        if len(instance.text) > 200:
+            instance.text = instance.text[:200]
+
+
 
 class Project(Screen):
     def Create_New_Project(self):
