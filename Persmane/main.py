@@ -1,8 +1,10 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
+from kivy.uix.boxlayout import BoxLayout
+from Back_end.validation import Validation
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
+from Back_end.data_base import Create_DB, Update_DB, Read_DB, Delete_DB
 
 Builder.load_file('Front-end/class.kv')
 Builder.load_file('Front-end/task.kv')
@@ -84,56 +86,57 @@ class Reminder(Screen):
         sm.current = 'new_reminder'
 
 class New_Reminder(Screen):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.Validate = Validation()
+        self.Update_DB = Update_DB()
+
+
     def Cancel_New_Reminder(self):
         sm.current = 'reminder'
     
     def Save_New_Reminder(self, name, date, time, description, link):
-        check = 0
+        check_1, check_2 = 0, 0
         self.Validate_Title(name)
-        check += self.Validate_Date(date)
-        check += self.Validate_Time(time)
+        check_1 = self.Validate_Date(date)
+        check_2 = self.Validate_Time(time)
         self.Validate_Description(description)
+        self.Validate_Link(link)
 
-        if check == 0:
-            #salvar no banco de dados
+        if check_1 == 0 and check_2 == 0:
+
+            name = name.text
+            date = date.text
+            time = time.text
+            description = description.text
+            link = link.text
+
+            self.Update_DB.Update_Lembrete(name, date, time, description, link)
             sm.current = 'reminder'
+
         else:
             pass
 
-
-
-
-        
-
     def Validate_Title(self, instance):
-        if len(instance.text) > 40:
-            instance.text = instance.text[:40]
+        Validation.Validate_Title(self, instance)
         
     def Validate_Date(self, instance):
-        text = instance.text
-
-        if len(text) > 8:
-            instance.text = text[:8]
-            text = text[:8]
-
-        if len(text) < 8:
-            instance.text = ''
-            self.ids.date_new_reminder.hint_text = 'Data invalida, repita'
+        if Validation.Validate_Date(self, instance) == 0:
             return 0
-
-        if len(text) == 8:
-            instance.text = text[:2] + '/' + text[2:4] + '/' + text[4:]
+        else:
+            return 1
 
     def Validate_Time(self, instance):
-        if instance.text > 1000:
-            instance.text = 'Tempo muito grande'
+        if Validation.Validate_Time(self, instance) == 0:
             return 0
-
+        else:
+            return 1
+        
     def Validate_Description(self, instance):
-        if len(instance.text) > 200:
-            instance.text = instance.text[:200]
+        Validation.Validate_Description(self, instance)
 
-
+    def Validate_Link(self, instance):
+        Validation.Validate_Link(self, instance)
 
 class Project(Screen):
     def Create_New_Project(self):
@@ -143,4 +146,5 @@ class New_Project(Screen):
     pass
 
 if __name__ == '__main__':
+    Create_DB()
     MyApp().run()
