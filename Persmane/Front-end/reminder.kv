@@ -8,6 +8,21 @@
             text: 'Novo Lembrete'
             on_press: root.Create_New_Reminder()
 
+    ScrollView:
+        size_hint: 0.8, 0.8
+        pos_hint: {'x': 0.1,'center_y': 0.5}
+        bar_width: 0
+        
+        BoxLayout:
+            id: box_layout
+            orientation: 'vertical'
+            size_hint_y: None  # Importante para o ScrollView funcionar corretamente
+            height: self.minimum_height  # Define a altura com base no conteúdo
+            spacing: 100
+
+
+
+
 
 
 <New_Reminder>:

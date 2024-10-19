@@ -1,10 +1,12 @@
 from kivy.app import App
 from kivy.lang import Builder
+from Back_end.data_base import *
+from Back_end.kivy_elements import *
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from Back_end.validation import Validation
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
-from Back_end.data_base import Create_DB, Update_DB, Read_DB, Delete_DB
+
 
 Builder.load_file('Front-end/class.kv')
 Builder.load_file('Front-end/task.kv')
@@ -12,6 +14,7 @@ Builder.load_file('Front-end/reminder.kv')
 Builder.load_file('Front-end/project.kv')
 
 sm = ScreenManager(transition = NoTransition())
+
 
 class MyApp(App):
     def build(self):
@@ -82,15 +85,31 @@ class New_Task(Screen):
     pass
 
 class Reminder(Screen):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.Validate = Validation()
+        self.Read_DB = Read_DB()
+
+    def on_enter(self):
+        lembretes = self.Read_Reminder()
+        box_layout = self.ids.box_layout
+
+        for i in range(len(lembretes)):
+            element = Element_FloatLayout_Class(lembretes[i])
+            box_layout.add_widget(element)
+
     def Create_New_Reminder(self):
         sm.current = 'new_reminder'
 
+    def Read_Reminder(self):
+        lembretes = self.Read_DB.Read_Reminder()
+        return lembretes
+        
 class New_Reminder(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.Validate = Validation()
         self.Update_DB = Update_DB()
-
 
     def Cancel_New_Reminder(self):
         sm.current = 'reminder'

@@ -28,11 +28,22 @@
     pos_hint: {'x': 0.2,'center_y': 0.6}
     size_hint: 0.6, 0.14
 #
+<Element_FloatLayout_Class@FloatLayout>
+    size_hint_max_y: 140
+    size_hint_min_y: 140
+    canvas:
+        Color:
+            rgba: 1, 0.5, 0, 1
+        Line:
+            width: 1
+            rectangle: (self.x, self.y, self.width, self.height)    
+    
+#
 #
 # LABELS
 #
 <Head_Label_Class@Label>:
-    font_size: 18
+    font_size: 25
     color: 1, 1, 1, 1
     pos_hint: {'center_x': 0.05,'center_y': 0.95}
     size_hint: self.width * 0.1, 0

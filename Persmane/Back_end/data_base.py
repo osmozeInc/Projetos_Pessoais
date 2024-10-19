@@ -13,19 +13,20 @@ class Create_DB:
 
 
 class Update_DB:
-    def __init__(self):
-        self.conexao = sqlite3.connect('data_base.db')
-
     def Update_Lembrete(self, titulo, data, hora, descricao, link):
-        self.conexao.execute('INSERT INTO lembretes (titulo, data, hora, descricao, link) VALUES (?, ?, ?, ?, ?)', (titulo, data, hora, descricao, link))
-        self.conexao.commit()
-        self.conexao.close()
+        conexao = sqlite3.connect('data_base.db')
+        conexao.execute('INSERT INTO lembretes (titulo, data, hora, descricao, link) VALUES (?, ?, ?, ?, ?)', (titulo, data, hora, descricao, link))
+        conexao.commit()
+        conexao.close()
         
 
 
 class Read_DB:
-    def __init__(self):
+    def Read_Reminder(self):
         self.conexao = sqlite3.connect('data_base.db')
+        lembretes = self.conexao.execute('SELECT * FROM lembretes').fetchall()
+        self.conexao.close()
+        return lembretes
 
 
 class Delete_DB:
