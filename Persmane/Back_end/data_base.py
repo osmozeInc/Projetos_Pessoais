@@ -30,5 +30,8 @@ class Read_DB:
 
 
 class Delete_DB:
-    def __init__(self):
+    def  Delete_Reminder(self, id):
         self.conexao = sqlite3.connect('data_base.db')
+        self.conexao.execute('DELETE FROM lembretes WHERE id = ?', (id,))
+        self.conexao.commit()
+        self.conexao.close()

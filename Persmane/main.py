@@ -6,6 +6,8 @@ from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from Back_end.validation import Validation
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
+from kivymd.app import MDApp
+
 
 
 Builder.load_file('Front-end/class.kv')
@@ -16,7 +18,7 @@ Builder.load_file('Front-end/project.kv')
 sm = ScreenManager(transition = NoTransition())
 
 
-class MyApp(App):
+class MyApp(MDApp):
     def build(self):
         Window.maximize()
 
@@ -33,7 +35,7 @@ class MyApp(App):
         layout.add_widget(nav_bar)
         layout.add_widget(sm)
         return layout
-
+    
 
 class NavigationBar(Screen, BoxLayout):
     def __init__(self, **kw):
@@ -163,6 +165,10 @@ class Project(Screen):
 
 class New_Project(Screen):
     pass
+
+def Update_Screen(screen):
+    sm.current = screen
+
 
 if __name__ == '__main__':
     Create_DB()

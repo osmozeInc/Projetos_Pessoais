@@ -16,12 +16,18 @@ ScreenManager:
 <NavigationBar>:
     size_hint_y: 0.1
     size: self.size
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            size: self.size
 
     BoxLayout:
         orientation: 'horizontal'
         size_hint: 1, 0.5
 
         Navbar_Button_Class:
+            id: reminder
             text: 'Lembretes'
             on_release: root.Press_Reminder()
         Navbar_Button_Class:
