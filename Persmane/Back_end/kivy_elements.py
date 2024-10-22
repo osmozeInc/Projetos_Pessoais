@@ -1,17 +1,22 @@
-from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 from kivy.uix.floatlayout import FloatLayout
 from kivymd.uix.button import MDIconButton
+from kivymd.uix.card import MDCard
 from kivy.uix.button import Button
 from kivy.uix.label import Label
-import webbrowser
+from kivy.clock import Clock
+
 
 from Back_end.data_base import *
 
+import webbrowser
+import time
 
-class Element_FloatLayout_Class(FloatLayout):
+desfazer = 0
+
+class Element_Reminder_FloatLayout_Class(FloatLayout):
     def __init__(self, lembretes, **kwargs):
-        super(Element_FloatLayout_Class, self).__init__(**kwargs)
-        self.Manager = Element_Manager()
+        super(Element_Reminder_FloatLayout_Class, self).__init__(**kwargs)
+        self.Manager = Reminder_Manager()
 
         # print(lembretes[0])   id do lembrete (chave primaria)
         # print(lembretes[1])   Titulo do lembrete
@@ -48,38 +53,64 @@ class Element_FloatLayout_Class(FloatLayout):
                               size_hint=(None, None),
                               size=(130, 30),
                               pos_hint={'x': 0.8,'center_y': 0.4},
-                              on_release=lambda instance: Abrir_link(lembretes[5])
+                              on_release=lambda instance: self.Manager.Abrir_link(lembretes[5])
                               ))
         
         self.add_widget(MDIconButton(icon="delete",
-                                     icon_size="30sp",
+                                     size=("40dp", "40dp"),
                                      theme_text_color="Custom",
                                      text_color=(1, 1, 1, 1),
                                      pos_hint={'x': 0.975, 'center_y': 0.7},
-                                     on_release=lambda instance: self.Manager.Delete_Lembrete(lembretes[0])
+                                     on_release=lambda instance: self.Notification(lembretes[0])
                                      ))
         
         self.add_widget(MDIconButton(icon="cog",
-                                     icon_size="30sp",
+                                     size=("40dp", "40dp"),
                                      theme_text_color="Custom",
                                      text_color=(1, 1, 1, 1),
                                      pos_hint={'x': 0.975, 'center_y': 0.3},
                                      on_release=lambda instance: self.Manager.Editar_Lembrete(lembretes[0])
                                      ))
+        
+    def Notification(self, id):
+        self.button_pressed = False
 
+        card = MDCard(pos_hint={'center_x': 0.875,'center_y': 0.65})
+        button = Button(text="Desfazer",
+                        color=(1, 1, 1, 1),
+                        background_color=[1, 0.25, 0.25, 0],
+                        pos_hint={'center_x': 0.945, 'center_y': 0.65},
+                        size_hint=(0.4, 0.3),
+                        on_release=lambda instance: self.on_button_press(card, button))
+        
+        self.add_widget(card)
+        self.add_widget(button)
+        Clock.schedule_once(lambda dt: self.not_button_press(id, card, button), 4)
+        
+    def on_button_press(self, card, button):
+            self.remove_widget(card)
+            self.remove_widget(button)
+            self.button_pressed = True
 
-class Element_Manager(Screen):
+    def not_button_press(self, id, card, button):
+        if self.button_pressed == False:
+            self.Manager.Delete_Reminder(id)
+            self.on_button_press(card, button)
+
+class Reminder_Manager():
     def __init__(self):
-        from main import Update_Screen
         self.Update = Update_DB()
         self.Delete = Delete_DB()
 
-    def Abrir_link(link):
+    def Open_link(link):
         webbrowser.open(link)
 
-    def Delete_Lembrete(self, id):
+    def Delete_Reminder(self, id):
         self.Delete.Delete_Reminder(id)
+
+    def Not_Delete_Reminder(self):
+        self.remove_widget(self.children[-1])
         
-        
-    def Editar_Lembrete(self, id):
+
+    def Edit_Reminder(self, id):
         pass

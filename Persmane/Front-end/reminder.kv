@@ -9,6 +9,7 @@
             on_press: root.Create_New_Reminder()
 
     ScrollView:
+        id: scroll_view
         size_hint: 0.8, 0.8
         pos_hint: {'x': 0.1,'center_y': 0.5}
         bar_width: 0
@@ -19,9 +20,12 @@
             size_hint_y: None  # Importante para o ScrollView funcionar corretamente
             height: self.minimum_height  # Define a altura com base no conteúdo
             spacing: 100
-
-
-
+    
+    BoxLayout:
+        id: notification_box
+        orientation: 'vertical'
+        pos_hint: {'center_x': 0.5,'center_y': 0.1}
+        size_hint: 0.2, 0.1
 
 
 
@@ -44,7 +48,7 @@
         SaveCancel_Ting_Button_Class:
             color: 1, 1, 1, 1
             text: 'Salvar'
-            on_press: root.Save_New_Reminder(title_new_reminder, date_new_reminder, time_new_reminder, description_new_reminder, link_new_reminder)
+            on_release: root.Save_New_Reminder(title_new_reminder, date_new_reminder, time_new_reminder, description_new_reminder, link_new_reminder)
     #
 
     New_Thing_BoxLayot_Class:

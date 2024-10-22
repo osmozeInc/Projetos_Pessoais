@@ -28,7 +28,7 @@
     pos_hint: {'x': 0.2,'center_y': 0.6}
     size_hint: 0.6, 0.14
 #
-<Element_FloatLayout_Class@FloatLayout>
+<Element_Reminder_FloatLayout_Class@FloatLayout>
     size_hint_max_y: 140
     size_hint_min_y: 140
     canvas:
@@ -107,3 +107,16 @@
         Line:
             points: self.width * 0.1, self.height * 0.85, self.width * 0.9, self.height * 0.85
             width: 1
+#
+<MDCard>:
+    orientation: 'horizontal'
+    size_hint: 0.2, 0.6
+    theme_bg_color: "Custom"
+    md_bg_color: [1, 0.25, 0.25, 1]
+    padding: [15, 0, 15, 0]
+
+    MDLabel:
+        id: notification
+        text: "Lembrete Excluido\nEle não estará aqui na próxima vez"
+        text_color: [1, 1, 1, 1]
+        

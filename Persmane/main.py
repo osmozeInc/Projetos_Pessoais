@@ -1,39 +1,35 @@
 from kivy.app import App
+from kivymd.app import MDApp
 from kivy.lang import Builder
-from Back_end.data_base import *
-from Back_end.kivy_elements import *
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from Back_end.validation import Validation
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
-from kivymd.app import MDApp
+
+from Back_end.data_base import *
+from Back_end.kivy_elements import *
 
 
 
-Builder.load_file('Front-end/class.kv')
-Builder.load_file('Front-end/task.kv')
-Builder.load_file('Front-end/reminder.kv')
-Builder.load_file('Front-end/project.kv')
-
-sm = ScreenManager(transition = NoTransition())
 
 
 class MyApp(MDApp):
     def build(self):
         Window.maximize()
+        self.sm = ScreenManager(transition = NoTransition())
 
-        sm.add_widget(Task(name='task'))
-        sm.add_widget(Reminder(name='reminder'))
-        sm.add_widget(Project(name='project'))
-        sm.add_widget(New_Task(name='new_task'))
-        sm.add_widget(New_Reminder(name='new_reminder'))
-        sm.add_widget(New_Project(name='new_project'))
+        self.sm.add_widget(Task(name='task'))
+        self.sm.add_widget(Reminder(name='reminder'))
+        self.sm.add_widget(Project(name='project'))
+        self.sm.add_widget(New_Task(name='new_task'))
+        self.sm.add_widget(New_Reminder(name='new_reminder'))
+        self.sm.add_widget(New_Project(name='new_project'))
 
         nav_bar = NavigationBar(orientation='horizontal')
 
         layout = BoxLayout(orientation='vertical')
         layout.add_widget(nav_bar)
-        layout.add_widget(sm)
+        layout.add_widget(self.sm)
         return layout
     
 
@@ -51,8 +47,8 @@ class NavigationBar(Screen, BoxLayout):
 
         if self.ids.project_line.opacity == 1:
             self.ids.project_line.opacity = 0
-
-        sm.current = 'task'
+        app = App.get_running_app()
+        app.sm.current = 'task'
 
     def Press_Reminder(self):
         if self.ids.reminder_line.opacity == 0:
@@ -64,7 +60,8 @@ class NavigationBar(Screen, BoxLayout):
         if self.ids.project_line.opacity == 1:
             self.ids.project_line.opacity = 0
 
-        sm.current = 'reminder'
+        app = App.get_running_app()
+        app.sm.current = 'reminder'
 
     def Press_Project(self):
         
@@ -77,11 +74,17 @@ class NavigationBar(Screen, BoxLayout):
         if self.ids.project_line.opacity == 0:
             self.ids.project_line.opacity = 1
             
-        sm.current = 'project'
+        app = App.get_running_app()
+        app.sm.current = 'project'
+
+    def Update_Screen(self, screen):
+        app = App.get_running_app()
+        app.sm.current = screen
 
 class Task(Screen):
     def Create_New_Task(self):
-        sm.current = 'new_task'
+        app = App.get_running_app()
+        app.sm.current = 'new_task'
 
 class New_Task(Screen):
     pass
@@ -93,20 +96,18 @@ class Reminder(Screen):
         self.Read_DB = Read_DB()
 
     def on_enter(self):
-        lembretes = self.Read_Reminder()
+        lembretes = self.Read_DB.Read_Reminder()
         box_layout = self.ids.box_layout
+        box_layout.clear_widgets()
 
         for i in range(len(lembretes)):
-            element = Element_FloatLayout_Class(lembretes[i])
+            element = Element_Reminder_FloatLayout_Class(lembretes[i])
             box_layout.add_widget(element)
 
     def Create_New_Reminder(self):
-        sm.current = 'new_reminder'
+        app = App.get_running_app()
+        app.sm.current = 'new_reminder'
 
-    def Read_Reminder(self):
-        lembretes = self.Read_DB.Read_Reminder()
-        return lembretes
-        
 class New_Reminder(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -114,7 +115,8 @@ class New_Reminder(Screen):
         self.Update_DB = Update_DB()
 
     def Cancel_New_Reminder(self):
-        sm.current = 'reminder'
+        app = App.get_running_app()
+        app.sm.current = 'reminder'
     
     def Save_New_Reminder(self, name, date, time, description, link):
         check_1, check_2 = 0, 0
@@ -125,18 +127,16 @@ class New_Reminder(Screen):
         self.Validate_Link(link)
 
         if check_1 == 0 and check_2 == 0:
+            self.Update_DB.Update_Lembrete(name.text, date.text, date.text, description.text, link.text)
 
-            name = name.text
-            date = date.text
-            time = time.text
-            description = description.text
-            link = link.text
+            self.ids.title_new_reminder.text = ''
+            self.ids.date_new_reminder.text = ''
+            self.ids.time_new_reminder.text = ''
+            self.ids.description_new_reminder.text = ''
+            self.ids.link_new_reminder.text = ''
 
-            self.Update_DB.Update_Lembrete(name, date, time, description, link)
-            sm.current = 'reminder'
-
-        else:
-            pass
+            app = App.get_running_app()
+            app.sm.current = 'reminder'
 
     def Validate_Title(self, instance):
         Validation.Validate_Title(self, instance)
@@ -161,15 +161,17 @@ class New_Reminder(Screen):
 
 class Project(Screen):
     def Create_New_Project(self):
-        sm.current = 'new_project'
+        app = App.get_running_app()
+        app.sm.current = 'new_project'
 
 class New_Project(Screen):
     pass
 
-def Update_Screen(screen):
-    sm.current = screen
-
 
 if __name__ == '__main__':
     Create_DB()
+    Builder.load_file('Front-end/class.kv')
+    Builder.load_file('Front-end/task.kv')
+    Builder.load_file('Front-end/reminder.kv')
+    Builder.load_file('Front-end/project.kv')
     MyApp().run()
