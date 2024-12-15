@@ -1,6 +1,7 @@
 #ifndef CONFIGURACOES_H
 #define CONFIGURACOES_H
 
+int LerTecla();
 void ApagarLinha();
 int JogarNovamente();
 void LimparBuffer();

@@ -1,28 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <Windows.h>
+#include <conio.h>
 #include "configuracoes.h"
 #include "../ranking/ranking.h"
 
 // Arquivos com as principais funções do jogo
 // funções que se repetem em varios arquivos ou configuram o sistema
 
-void ApagarLinha(int numero_de_linhas) 
-{
+
+int LerTecla(int opcao, int max) {
+    int tecla = _getch();
+
+    if (tecla == 0)
+    {
+        tecla = _getch();
+        if (tecla == 72 && opcao > 1)
+            opcao--;
+        else if (tecla == 80 && opcao < max)
+            opcao++;
+    }
+    else if (tecla == 13)
+        return 13;
+
+    return opcao;
+}
+
+void ApagarLinha(int numero_de_linhas) {
     for (int i = 0; i < numero_de_linhas; i++)
     {
         printf("\e[A\e[K");
     }
 }
 
-void Ranking(int pontuacao, int jogo)
-{
+void Ranking(int pontuacao, int jogo) {
     int resposta = Config_EscolherRegistrar(pontuacao);
     Config_RegistrarPlacar(resposta, pontuacao, jogo);
 }
 
-int JogarNovamente()
-{
+int JogarNovamente() {
     const char* fundo = CorDeDestaqueMenu();
     const char* texto = CorDoTextoMenu();
     const char* resetar = reset();
@@ -69,15 +85,13 @@ int JogarNovamente()
     return opcao;
 }
 
-void LimparBuffer() 
-{
+void LimparBuffer() {
     int c;
     // Lê até encontrar um caractere de nova linha ou EOF
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-const char* CorDeDestaqueMenu()
-{
+const char* CorDeDestaqueMenu() {
     char conteudo[10];
 
     FILE *arquivo = fopen("configuracoes/fundo_do_menu.txt", "r");
@@ -99,8 +113,7 @@ const char* CorDeDestaqueMenu()
     }
 } 
 
-const char* CorDoTextoMenu()
-{
+const char* CorDoTextoMenu() {
     char conteudo[10];
 
     FILE *arquivo = fopen("configuracoes/texto_do_menu.txt", "r");
@@ -122,7 +135,6 @@ const char* CorDoTextoMenu()
     }
 }
 
-const char* reset()
-{
+const char* reset() {
     return "\033[0m";
 }

@@ -23,13 +23,14 @@ int Menu()
     const char* fundo = CorDeDestaqueMenu();
     const char* texto = CorDoTextoMenu();
     const char* resetar = reset();
-    char tecla_char;
-    int tecla_int, opcao = 1;
-    printf("\n\n\n\n\n\n\n");
+    int opcao = 1;
 
+    printf("\n\n\n\n\n\n");
     while (1)
     {
-        ApagarLinha(7);
+        printf("\n");
+        ApagarLinha(6);
+
         if (opcao == 1)
         {
             printf("%s1. Jogo da Velha (enter)%s\n", fundo, resetar);
@@ -80,37 +81,22 @@ int Menu()
             printf("%sEscolha uma opção: ", texto);
         }
 
-        // alterei a forma de ler a tecla pressionada
-        // antes era usado a biblioteca conion.h
-        // agora está sendo usado o getchar() que é padrão do C
-
-        tecla_char = getchar();
-        if (tecla_char == '\n') break;
-        else{
-            tecla_int = tecla_char - '0';
-            if (tecla_int >= 1 && tecla_int <= 5)
-            {
-                opcao = tecla_int;
-                getchar();
-                printf("\n");
-            }
-            else
-            {
-                getchar();
-                printf("\n");
-            }
-        }
+        int tecla = LerTecla(opcao, 5);
+        if (tecla != 13) opcao = tecla;
+        else break;
     }
     return opcao;
 }
 
 int main() 
 {
-    while (1) // uso do while (1) para evitar várias funções abertas no mesmo momento
+
     {
         system("cls || clear");
         GameHouse(); // nome do sistema
         int opcao = Menu();
+        printf("%d\n", opcao);
+
         if (opcao == 1) system(".\\Jogos\\jogo_da_velha.exe");
 
         else if (opcao == 2) system(".\\Jogos\\jogo_de_dados.exe");
