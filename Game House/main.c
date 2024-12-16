@@ -4,6 +4,7 @@
 
 #define VERDE "\033[32m"
 
+
 void carregando(int num_porcent_bottom, int num_porcent_top){
     int start = 0;
 
@@ -42,7 +43,6 @@ void carregando(int num_porcent_bottom, int num_porcent_top){
     }
 }
 
-
 int main(){
     system("chcp 65001");
 
@@ -56,7 +56,7 @@ int main(){
     system("gcc configuracoes/configuracoes.c ranking/ranking.c configuracoes/configurar_cores.c -o configuracoes/configurar_cores.exe");
     carregando(60, 80);
     system("gcc configuracoes/configuracoes.c ranking/ranking.c ranking/placar_ranking.c -o ranking/placar_ranking.exe");
-    carregando(80, 100);
+    carregando(81, 100); // é ideal que o carregamento que não comece de 0 seja em mutiplos de 3
 
 
     system("game_house.exe");
