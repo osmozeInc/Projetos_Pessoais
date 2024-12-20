@@ -90,7 +90,7 @@ int Menu()
 
 int main() 
 {
-
+    while (1)
     {
         system("cls || clear");
         GameHouse(); // nome do sistema
