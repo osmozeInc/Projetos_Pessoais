@@ -5,7 +5,7 @@
 #define VERDE "\033[32m"
 
 
-void carregando(int num_porcent_from, int num_porcent_to, char* mensagem){
+void carregando(int num_porcent_from, int num_porcent_to, char mensagem[31]){
     int start = 0;
 
     system("cls");
@@ -18,8 +18,9 @@ void carregando(int num_porcent_from, int num_porcent_to, char* mensagem){
     for (int i = 1; i <= (num_porcent_to - num_porcent_from)/3; i++)    // cria os espaços
     {
         printf("|");
+
         for (int j = 0; j < i + start; j++)     //cria a barra de porcentagem
-        printf("#");
+            printf("#");
         for (int j = i + start; j < 33; j++)    // cria os espaços
             printf(" ");
 
@@ -28,19 +29,16 @@ void carregando(int num_porcent_from, int num_porcent_to, char* mensagem){
         else 
             printf("|%4d%% |", num_porcent_from + (i * 3) + 1);
 
-        printf("\n|=================================|======|");
-        printf("\n| %-31s |", mensagem);
-        printf("\n|=================================|\n");
+        printf("\n|=================================|======|"
+               "\n| %-31s |"
+               "\n|=================================|\n", mensagem);
 
         Sleep(120);
 
 
         if (i < (num_porcent_to - num_porcent_from)/3)
         {
-            printf("\e[A\e[K");
-            printf("\e[A\e[K");
-            printf("\e[A\e[K");
-            printf("\e[A\e[K");
+            printf("\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K");
         }
     }
 }
