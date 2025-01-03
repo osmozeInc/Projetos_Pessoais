@@ -4,10 +4,9 @@ html{
     background-color: #f0f0f0;
 }
 
-.all-pdf{
-                /* Largura da folha A4 */
-    width: 21cm;
-    height: 29.7cm;
+.all-pdf{ /* folha A4 */              
+    width: 20cm;
+    height: 28.7cm;
     padding: 40px;
     background-color: white;
 }
@@ -17,7 +16,15 @@ header{
     line-height: .5;
 }
 
+h2{
+    text-align: center;
+}
+
 .datePDF{
     display: flex;
     justify-content: end;
+}
+
+table, thead{
+    border: 1px solid black;
 }
