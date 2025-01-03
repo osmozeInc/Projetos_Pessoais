@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento</title>
+</head>
+
+<div> <!-- script e link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" integrity="sha512-MpDFIChbcXl2QgipQrt1VcPHMldRILetapBl5MPCA9Y8r7qvlwx1/Mc9hNTzY+kS5kX6PdoDq41ws1HiVNLdZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+</div>
+
+<body>
+
+
+    
+
+
+
+
+
+<h3>PDF de Orçamento:</h3>
+<div id="test" class="all-pdf">
+    
+    <header>
+        <b>LUTHA CONCRETO REVESTIMENTOS E ACABAMENTOS LTDA</b>
+        <p>Rua Francisco Bezerra de Vasconcelos, 172 - Campo dos Velhos</p>
+        <p>Sobral - CE - 62030220</p>
+        <p>Telefone: (88)99249-4769</p>
+    </header>
+
+    <div class="datePDF">
+        Dt.: 
+    </div>
+
+    <h2>Orçamento</h2>
+    
+    <div class="">
+        <p>Pedido: 535</p>
+        <p>Data: 10/12/2024</p>
+        <p>Vendedor: LOJA</p>
+        <p>Validade:</p>
+    </div >
+    <section>
+        <h2>Dados cadastrais do cliente</h2>
+        <p>Código/Nome: 448 - ROBERTA PESSOA</p>
+        <p>CPF/CNPJ:</p>
+        <p>RG/IE:</p>
+        <p>Endereço:</p>
+        <p>Complemento:</p>
+        <p>Bairro:</p>
+        <p>Cidade/UF: Sobral - CE</p>
+        <p>CEP:</p>
+        <p>Telefone:</p>
+        <p>Celular: 88999343566</p>
+        <p>Contato:</p>
+        <p>E-mail:</p>
+    </section>
+    <section>
+        <h2>Itens do pedido</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome do Produto</th>
+                    <th>Quantidade</th>
+                    <th>Un.</th>
+                    <th>Vlr. Unit.</th>
+                    <th>Vlr. Sub-total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>22</td>
+                    <td>PEDRA MOLEDO SERRADA EM CONCRETO KIT 33 PÇ/M²<br>TAMANHOS VARIÁVEIS GRAFITE</td>
+                    <td>5</td>
+                    <td>M²</td>
+                    <td>220,00</td>
+                    <td>1.100,00</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Qtde Itens: 1</p>
+        <p>Qtde Total: 5</p>
+        <p>Sub-Total: 1.100,00</p>
+        <p>Desconto(-): 0,00</p>
+        <p>Total: 1.100,00</p>
+    </section>
+    <section>
+        <h2>Observações Totais</h2>
+        <p>Frete(+): 0,00</p>
+        <p>Seguro(+): 0,00</p>
+        <p>Outros(+): 0,00</p>
+    </section>
+    <section>
+        <h2>Condições de Pagamento</h2>
+        <p>CARTÃO ATÉ 10X SEM JUROS OU À VISTA 10% DE DESCONTO</p>
+    </section>
+    <footer>
+        <p>ROBERTA PESSOA</p>
+        <p>LUTHA CONCRETO REVESTIMENTOS E ACABAMENTOS LTDA</p>
+    </footer>
+
+</div>
+
+<button id="download">Download</button>
+
+
+</body>
+</html>

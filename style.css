@@ -1,0 +1,23 @@
+html{
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.all-pdf{
+                /* Largura da folha A4 */
+    width: 21cm;
+    height: 29.7cm;
+    padding: 40px;
+    background-color: white;
+}
+
+header{
+    margin-left: 15%;
+    line-height: .5;
+}
+
+.datePDF{
+    display: flex;
+    justify-content: end;
+}
