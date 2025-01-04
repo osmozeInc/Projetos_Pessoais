@@ -16,57 +16,42 @@
 
 <body>
 
-<!--
-    <form>
-        <fieldset>
             <legend> Informações Principais </legend>
             <table>
                 <tr>
                     <td>Pedido: </td>
-                    <td><input type="number" name="nome"></td>
+                    <td><input type="number" id="pedido-imput"></td>
                 </tr>
                 <tr>
-                    <td>Sobrenome: </td>
-                    <td><input type="text" ></td>
+                    <td>Validade: </td>
+                    <td><input type="date" id="validade-imput"></td>
                 </tr>
                 <tr>
-                    <td>Idade: </td>
-                    <td><input type="number" name="idade" min="0" max="120"></td>
-                </tr>
-                <tr>
-                    <td>Data de nascimento: </td>
-                    <td><input type="date" name="data"></td>
+                    <td>Vendedor: </td>
+                    <td><input type="text" id="vendedor-imput"></td>
                 </tr>
             </table>
         </fieldset>
 
         <fieldset>
-            <legend>Dados Profisionais</legend>
+            <legend> Dados Cadastrais do Cliente </legend>
             <table>
-            <tr>
-                <td>Escolaridade:</td>
-                <td>
-                <input type="radio" name="escolaridade" class="escolaridade" value="Ensino Fundamental Incompleto"> Ensino Fundamental Incompleto <br>
-                <input type="radio" name="escolaridade" class="escolaridade" value="Ensino Fundamental Completo"> Ensino Fundamental Completo <br>
-                <input type="radio" name="escolaridade" class="escolaridade" value="Ensino Médio Incompleto"> Ensino Médio Incompleto <br>
-                <input type="radio" name="escolaridade" class="escolaridade" value="Ensino Médio Completo"> Ensino Médio Completo <br>
-                </td>
-            </tr>       
-            <tr>
-                Ultima experiência: <input type="text" name="experiencia" id="">
-            </tr><br>
-            <tr>
-                Pretenção salarial: <input type="number" name="pretensao" id="" step="0.10" min="0.00" placeholder="0.00" required>
-            </tr>
+                <tr>
+                    <td>Código/Nome: </td>
+                    <td><input type="text" name="nome"></td>
+                </tr>
+                <tr>
+                    <td>CPF/CNPJ: </td>
+                    <td><input type="text" ></td>
+                </tr>
+                <tr>
+                    <td>RG/IE: </td>
+                    <td><input type="text" ></td>
+                </tr>
             </table>
-        </fieldset> <br>
-        <input type="reset" name="Limpar" id="">
-        <input type="submit" name="Salvar" id="">
-    </form>    
--->
 
-
-    
+        <button id="save">Salvar</button>
+     
 
 
 
@@ -76,34 +61,36 @@
 <div class="container-pdf">
     <div id="test" class="pagina-pdf">
 
-
-        <div class="cabecario d-flex flex-column justify-content-center align-items-start">
+        <!-- cabecario -->
+        <div class="cabecario">
             <b>LUTHA CONCRETO REVESTIMENTOS E ACABAMENTOS LTDA</b>
             Rua Francisco Bezerra de Vasconcelos, 172 - Campo dos Velhos <br>
             Sobral - CE - 62030220 <br>
             Telefone: (88)99249-4769 <br>
         </div>
 
+        <!-- data -->
         <div class="datePDF">
             Dt.: 
         </div>
 
-        <h4>Orçamento</h4>
+        <h4>Orçamento</h4> <!-- titulo -->
 
+        <!-- tabela 1 -->
         <div class="tabela-1">
 
             <div class="tabela-1-head">
                 <div class="head-parte-1">
-                    <p>pedido:</p>
+                    <p>pedido: </p>
                     <b><p id="pedido"></p></b>
-                    <p>data:</p>
-                    <p class="data"></p>
-                    <p>validade:</p>
-                    <p class="validade"></p>
+                    <p>data: </p>
+                    <p id="data"></p>
+                    <p>validade: </p>
+                    <p id="validade"></p>
                 </div>
                 <div class="head-parte-2">
-                    <p>Vendedor:</p>
-                    <p class="vendedor"></p>
+                    <p>Vendedor: </p>
+                    <p id="vendedor"></p>
                 </div>
             </div>
 
@@ -174,36 +161,11 @@
                         <p id="e-mail"></p>
                     </div>
                 </div>
-
-
-
-
-                
             </div>
         </div>
 
 
-            
-        </table>
-
-
-
-
-        <section>
-            <h2>Dados cadastrais do cliente</h2>
-            <p>Código/Nome: 448 - ROBERTA PESSOA</p>
-            <p>CPF/CNPJ:</p>
-            <p>RG/IE:</p>
-            <p>Endereço:</p>
-            <p>Complemento:</p>
-            <p>Bairro:</p>
-            <p>Cidade/UF: Sobral - CE</p>
-            <p>CEP:</p>
-            <p>Telefone:</p>
-            <p>Celular: 88999343566</p>
-            <p>Contato:</p>
-            <p>E-mail:</p>
-        </section>
+        <!--
         <section>
             <h2>Itens do pedido</h2>
             <table border="1">
@@ -250,6 +212,7 @@
         </footer>
 
     </div>
+    -->
 
     <div>
         <button id="download">Download</button>

@@ -15,6 +15,11 @@ h4{
     font-weight: 600;
 }
 
+hr{
+    color: #000;
+    border: 1px solid #000;
+}
+
 .container-pdf{
     display: flex;
     flex-direction: column;
@@ -60,6 +65,7 @@ h4{
 
 .head-parte-2{
     display: flex;
+    justify-content: space-evenly;
     width: 40%;
 }
 
@@ -76,36 +82,25 @@ h4{
     }
 }
 
-.body-l1-parte-1, .body-l2-parte-1{
+.body-l1-parte-1, .body-l2-parte-1, .body-l2-parte-2{
     display: flex;
     width: 50%;
     margin-right: 5px;
 }
 
-.body-l1-parte-2{
+.body-l1-parte-2, .body-l1-parte-3{
     display: flex;
     width: 25%;
     margin-right: 5px;
 }
 
-.body-l1-parte-3{
-    display: flex;
-    align-items: center;
-    width: 25%;
-}
-
-.body-l2-parte-2{
-    display: flex;
-    width: 50%;
-}
-
-.body-l3-parte-1{
+.body-l3-parte-1, .body-l4-parte-1, .body-l5-parte-1{
     display: flex;
     width: 40%;
     margin-right: 5px;
 }
 
-.body-l3-parte-2{
+.body-l3-parte-2, .body-l4-parte-2, .body-l5-parte-2{
     display: flex;
     width: 30%;
     margin-right: 5px;
@@ -115,28 +110,4 @@ h4{
     display: flex;
     align-items: center;
     width: 20%;
-}
-
-.body-l4-parte-1{
-    display: flex;
-    width: 40%;
-    margin-right: 5px;
-}
-
-.body-l4-parte-2{
-    display: flex;
-    width: 30%;
-    margin-right: 5px;
-}
-
-.body-l5-parte-1{
-    display: flex;
-    width: 40%;
-    margin-right: 5px;
-}
-
-.body-l5-parte-2{
-    display: flex;
-    width: 30%;
-    margin-right: 5px;
 }
