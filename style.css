@@ -1,23 +1,36 @@
-html{
-    font-size: small;
+html, body{
+    font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ddd;
 }
 
-.all-pdf{ /* folha A4 */              
-    width: 20cm;
-    height: 28.7cm;
-    padding: 40px;
-    background-color: white;
-}
 
 header{
     margin-left: 15%;
     line-height: .5;
 }
 
-h2{
+h4{
     text-align: center;
+    font-weight: 600;
+}
+
+.container-pdf{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagina-pdf{ /* folha A4 */              
+    width: 20cm;
+    height: 28.7cm;
+    padding: 40px;
+    background-color: white;
+}
+
+.cabecario{
+    display: flex;
+    flex-direction: column;
 }
 
 .datePDF{
@@ -25,6 +38,105 @@ h2{
     justify-content: end;
 }
 
-table, thead{
+.tabela-1{
+    display: flex;
+    flex-direction: column;
     border: 1px solid black;
+}
+
+.tabela-1-head{
+    display: flex;
+    width: 100%;
+    margin-bottom: -20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.head-parte-1{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.head-parte-2{
+    display: flex;
+    width: 40%;
+}
+
+.tabela-1-body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: -10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    & div{
+        margin-bottom: -4px;
+    }
+}
+
+.body-l1-parte-1, .body-l2-parte-1{
+    display: flex;
+    width: 50%;
+    margin-right: 5px;
+}
+
+.body-l1-parte-2{
+    display: flex;
+    width: 25%;
+    margin-right: 5px;
+}
+
+.body-l1-parte-3{
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+
+.body-l2-parte-2{
+    display: flex;
+    width: 50%;
+}
+
+.body-l3-parte-1{
+    display: flex;
+    width: 40%;
+    margin-right: 5px;
+}
+
+.body-l3-parte-2{
+    display: flex;
+    width: 30%;
+    margin-right: 5px;
+}
+
+.body-l3-parte-3{
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+
+.body-l4-parte-1{
+    display: flex;
+    width: 40%;
+    margin-right: 5px;
+}
+
+.body-l4-parte-2{
+    display: flex;
+    width: 30%;
+    margin-right: 5px;
+}
+
+.body-l5-parte-1{
+    display: flex;
+    width: 40%;
+    margin-right: 5px;
+}
+
+.body-l5-parte-2{
+    display: flex;
+    width: 30%;
+    margin-right: 5px;
 }
