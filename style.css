@@ -294,3 +294,23 @@ h6{
         text-align: center;
     }
 }
+
+.container-formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: aliceblue;
+
+    .titulo-formulario{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .formulario-1{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+}

@@ -1,6 +1,6 @@
 
 
-
+// função para receber a data do dia e atualizar no documento
 function atualizar_data(){
     const formattedDate1 = new Intl.DateTimeFormat('pt-BR', {
         day: '2-digit',
@@ -24,7 +24,7 @@ function atualizar_data(){
 }
 
 
-
+// função para atualizar o pdf pelo formulário
 const btnsave = document.querySelector("#save");
 btnsave.addEventListener("click", function(){
     let ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular','email'];
@@ -42,7 +42,7 @@ btnsave.addEventListener("click", function(){
 
 
 
-// download pdf
+// função para fazer o download do pdf
 const btnpdf = document.getElementById("download");
 btnpdf.addEventListener("click", function(){
     
