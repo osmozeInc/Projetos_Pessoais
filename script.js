@@ -44,25 +44,60 @@ btnpdf.addEventListener("click", function(){
 const btnsave = document.querySelector("#save");
 btnsave.addEventListener("click", function(){
 
+    // nome dos ids do formulário foi separado em vários arrays para facilitar a leitura e correção
 
-    // nome dos ids do formulário, separado em vários arrays para facilitar a leitura e correção
-    let tab1_ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular', 'email'];
+    // repetições para alterar o pdf de acordo com cada id
 
-    let tab2_ids = ['codigo', 'nome-produto', 'quantidade', 'un', 'vlr-unit', 'vlr-sub-total'];
+    // repetição da tabela 1
+    for(let i = 0; i < 15; i++){
+        
+        let tab1_ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular', 'email'];
 
-    let tab3_4_5_ids = ['observacoes', 'qtde-itens', 'qtde-total', 'sub-total', 'frete', 'seguro', 'outros', 'desconto', 'total', 'condicoes-pagamento'];
-
-    // repetição para alterar o pdf de acordo com cada id
-    for(let i = 0; i < tab1_ids.length; i++){
         let imput = document.getElementById(tab1_ids[i] + '-input');
         let output = document.getElementById(tab1_ids[i]);
 
         if(imput){
             output.textContent = imput.value;
         }
+        else{
+            console.log('tab1 - erro com o input' + tab1_ids[i]);
+        }
+    }
+
+    
+    // repetição da tabela 2
+    for(let i = 0; i < 6; i++){
+
+        let tab2_ids = ['codigo', 'nome-produto', 'quantidade', 'un', 'vlr-unit', 'vlr-sub-total'];
+
+        let imput = document.getElementById(tab2_ids[i] + '-input');
+        let output = document.getElementById(tab2_ids[i]);
+
+        if(imput){
+            output.textContent = imput.value;
+        }
+        else{
+            console.log('tb2 - erro com o input' + tab2_ids[i]);
+        }
+    }
+
+
+    // repetição da tabela 3
+    for(let i = 0; i < 10; i++){
+
+        let tab3_4_5_ids = ['observacoes', 'qtde-itens', 'qtde-total', 'sub-total', 'frete', 'seguro', 'outros', 'desconto', 'total', 'condicoes-pagamento'];
+
+        let imput = document.getElementById(tab3_4_5_ids[i] + '-input');
+        let output = document.getElementById(tab3_4_5_ids[i]);
+
+        if(imput){
+            output.textContent = imput.value;
+        }
+        else{
+            console.log('tab345 - erro com o input' + tab3_4_5_ids[i]);
+        }
     }
 });
-
 
 
 

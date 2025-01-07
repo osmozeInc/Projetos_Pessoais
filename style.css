@@ -314,4 +314,22 @@ h6{
         width: 80%;
         margin-bottom: 40px;
     }
+
+    .tabela-variante{
+        display: flex;
+        width: 100%;
+        height: 130px;
+        background-color: antiquewhite;
+        
+        & tr{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: aqua;
+        }
+
+        & td{
+            height: 100%;
+        }
+    }
 }
