@@ -43,22 +43,18 @@ btnsave.addEventListener("click", function(){
 
 
 // download pdf
-const btnpdf = document.querySelector("#download");
+const btnpdf = document.getElementById("download");
 btnpdf.addEventListener("click", function(){
     
     let opt = {
-        margin:       0,
+        margin:       [0, 0, 0, 0],
         filename:     'myfile.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait', moveTo: '100, 100' },
-        moveto: {
-            top: 10,
-            left: 10
-        }
+        html2canvas:  { scale: 2},
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait'},
     };
 
-    const element = document.querySelector('#test');
+    const element = document.getElementById('download-pdf');
 
     html2pdf().set(opt).from(element).save();
 });
