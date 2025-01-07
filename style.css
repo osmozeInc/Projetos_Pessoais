@@ -300,17 +300,18 @@ h6{
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: aliceblue;
 
     .titulo-formulario{
         display: flex;
         justify-content: space-between;
         width: 80%;
+        margin-bottom: 10px;
     }
 
-    .formulario-1{
+    .formulario{
         display: flex;
         justify-content: space-between;
         width: 80%;
+        margin-bottom: 40px;
     }
 }

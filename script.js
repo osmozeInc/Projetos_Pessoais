@@ -46,23 +46,19 @@ btnsave.addEventListener("click", function(){
 
 
     // nome dos ids do formulário, separado em vários arrays para facilitar a leitura e correção
-    let tab1_ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular','email'];
+    let tab1_ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular', 'email'];
 
     let tab2_ids = ['codigo', 'nome-produto', 'quantidade', 'un', 'vlr-unit', 'vlr-sub-total'];
 
     let tab3_4_5_ids = ['observacoes', 'qtde-itens', 'qtde-total', 'sub-total', 'frete', 'seguro', 'outros', 'desconto', 'total', 'condicoes-pagamento'];
 
-    let cont = tab1_ids.length + tab2_ids.length + tab3_4_5_ids.length;
-
-
     // repetição para alterar o pdf de acordo com cada id
-    for(let i = 0; i < cont; i++){
+    for(let i = 0; i < tab1_ids.length; i++){
         let imput = document.getElementById(tab1_ids[i] + '-input');
         let output = document.getElementById(tab1_ids[i]);
 
         if(imput){
             output.textContent = imput.value;
-            console.log('execução: ' + `${i + 1}`);
         }
     }
 });

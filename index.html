@@ -51,64 +51,64 @@
 
                     <div class="d-flex">
                         <div class="body-l1-parte-1">
-                            <p>Código/Nome:</p>
+                            <p>Código/Nome: </p>
                             <p id="codigo-nome"></p>
                         </div>
                         <div class="body-l1-parte-2">
-                            <p>CPF/CNPJ:</p>
+                            <p>CPF/CNPJ: </p>
                             <p id="cpf-cnpj">___.___.___-__</p>
                         </div>
                         <div class="body-l1-parte-3">
-                            <p>RG/IE:</p>
+                            <p>RG/IE: </p>
                             <p id="rg-ie"></p>
                         </div>
                     </div>
                     
                     <div class="d-flex">
                         <div class="body-l2-parte-1">
-                            <p>Endereço:</p>
-                            <p id="endereço"></p>
+                            <p>Endereço: </p>
+                            <p id="endereco"></p>
                         </div>
                         <div class="body-l2-parte-2">
-                            <p>Complemento:</p>
+                            <p>Complemento: </p>
                             <p id="complemento"></p>
                         </div>
                     </div>
                     
                     <div class="d-flex">
                         <div class="body-l3-parte-1">
-                            <p>Bairro:</p>
+                            <p>Bairro: </p>
                             <p id="bairro"></p>
                         </div>
                         <div class="body-l3-parte-2">
-                            <p>Cidade/UF:</p>
+                            <p>Cidade/UF: </p>
                             <p id="cidade-uf"></p>
                         </div>
                         <div class="body-l3-parte-3">
-                            <p>CEP:</p>
+                            <p>CEP: </p>
                             <p id="cep">_____-___</p>
                         </div>
                     </div>
 
                     <div class="d-flex">
                         <div class="body-l4-parte-1">
-                            <p>Telefone:</p>
+                            <p>Telefone: </p>
                             <p id="telefone"></p>
                         </div>
                         <div class="body-l4-parte-2">
-                            <p>Contato:</p>
+                            <p>Contato: </p>
                             <p id="contato"></p>
                         </div>
                     </div>
 
                     <div class="d-flex">
                         <div class="body-l5-parte-1">
-                            <p>Celular:</p>
+                            <p>Celular: </p>
                             <p id="celular"></p>
                         </div>
                         <div class="body-l5-parte-2">
-                            <p>E-mail:</p>
-                            <p id="e-mail"></p>
+                            <p>E-mail: </p>
+                            <p id="email"></p>
                         </div>
                     </div>
                 </div>
@@ -255,10 +255,8 @@
             <h4> Dados Cadastrais do Cliente </h4>
         </div>
         
-        <div class="formulario-1">
-            
-
-            <table>
+        <div class="formulario">
+            <table> <!-- tabela 1 head -->
                 <tr>
                     <td>Pedido: </td>
                     <td><input type="number" id="pedido-input"></td>
@@ -273,7 +271,7 @@
                 </tr>
             </table>
 
-            <table>
+            <table> <!-- tabela 1 body -->
                 <tr>
                     <td>Código/Nome: </td>
                     <td><input type="text" id="codigo-nome-input"></td>
@@ -286,8 +284,72 @@
                     <td>RG/IE: </td>
                     <td><input type="text" id="rg-ie-input"></td>
                 </tr>
+                <tr>
+                    <td>Endereço: </td>
+                    <td><input type="text" id="endereco-input"></td>
+                </tr>
+                <tr>
+                    <td>Complemento: </td>
+                    <td><input type="text" id="complemento-input"></td>
+                </tr>
+                <tr>
+                    <td>Bairro: </td>
+                    <td><input type="text" id="bairro-input"></td>
+                </tr>
+                <tr>
+                    <td>Cidade/UF: </td>
+                    <td><input type="text" id="cidade-uf-input"></td>
+                </tr>
+                <tr>
+                    <td>CEP: </td>
+                    <td><input type="text" id="cep-input"></td>
+                </tr>
+                <tr>
+                    <td>Telefone: </td>
+                    <td><input type="text" id="telefone-input"></td>
+                </tr>
+                <tr>
+                    <td>Contato: </td>
+                    <td><input type="text" id="contato-input"></td>
+                </tr>
+                <tr>
+                    <td>Celular: </td>
+                    <td><input type="text" id="celular-input"></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="text" id="email-input"></td>
+                </tr>
             </table>
-    
+        </div>
+
+        <div class="titulo-formulario">
+            <h4>Itens do Pedido</h4>
+        </div>
+
+        <div class="formulario">
+            <table> <!-- tabela 2 -->
+                <tr>
+                    <td>Produto: </td>
+                    <td><input type="text" id="produto-input"></td>
+                </tr>
+                <tr>
+                    <td>Qtde: </td>
+                    <td><input type="number" id="qtde-input"></td>
+                </tr>
+                <tr>
+                    <td>Unidade: </td>
+                    <td><input type="text" id="unidade-input"></td>
+                </tr>
+                <tr>
+                    <td>Valor Un.: </td>
+                    <td><input type="number" id="valor-un-input"></td>
+                </tr>
+                <tr>
+                    <td>Valor Total: </td>
+                    <td><input type="number" id="valor-total-input"></td>
+                </tr>
+            </table>
         </div>
 
     </div>
@@ -297,7 +359,7 @@
     <button id="save">Salvar</button>
 
 
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
 
