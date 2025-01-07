@@ -1,5 +1,3 @@
-
-
 // função para receber a data do dia e atualizar no documento
 function atualizar_data(){
     const formattedDate1 = new Intl.DateTimeFormat('pt-BR', {
@@ -24,24 +22,6 @@ function atualizar_data(){
 }
 
 
-// função para atualizar o pdf pelo formulário
-const btnsave = document.querySelector("#save");
-btnsave.addEventListener("click", function(){
-    let ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular','email'];
-
-    for(let i = 0; i < ids.length; i++){
-        let imput = document.getElementById(ids[i] + '-imput');
-        let output = document.getElementById(ids[i]);
-
-        if(imput){
-            output.textContent = imput.value;
-            console.log('execução: ' + `${i + 1}`);
-        }
-    }
-});
-
-
-
 // função para fazer o download do pdf
 const btnpdf = document.getElementById("download");
 btnpdf.addEventListener("click", function(){
@@ -58,5 +38,37 @@ btnpdf.addEventListener("click", function(){
 
     html2pdf().set(opt).from(element).save();
 });
+
+
+// função para atualizar o pdf pelo formulário
+const btnsave = document.querySelector("#save");
+btnsave.addEventListener("click", function(){
+
+
+    // nome dos ids do formulário, separado em vários arrays para facilitar a leitura e correção
+    let tab1_ids = ['pedido', 'validade', 'vendedor', 'codigo-nome', 'cpf-cnpj', 'rg-ie', 'endereco', 'complemento', 'bairro', 'cidade-uf', 'cep', 'telefone', 'contato',  'celular','email'];
+
+    let tab2_ids = ['codigo', 'nome-produto', 'quantidade', 'un', 'vlr-unit', 'vlr-sub-total'];
+
+    let tab3_4_5_ids = ['observacoes', 'qtde-itens', 'qtde-total', 'sub-total', 'frete', 'seguro', 'outros', 'desconto', 'total', 'condicoes-pagamento'];
+
+    let cont = tab1_ids.length + tab2_ids.length + tab3_4_5_ids.length;
+
+
+    // repetição para alterar o pdf de acordo com cada id
+    for(let i = 0; i < cont; i++){
+        let imput = document.getElementById(tab1_ids[i] + '-input');
+        let output = document.getElementById(tab1_ids[i]);
+
+        if(imput){
+            output.textContent = imput.value;
+            console.log('execução: ' + `${i + 1}`);
+        }
+    }
+});
+
+
+
+
 
 atualizar_data();
