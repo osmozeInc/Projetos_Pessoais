@@ -6,7 +6,6 @@
 #define LIMPAR_TELA "\033[2J\033[H"
 
 void carregando(int num_porcent_from, int num_porcent_to, char mensagem[31]){
-
     printf(LIMPAR_TELA VERDE"Iniciando Sistema...\n\n\n"
            "|=================================|======|\n");
 
@@ -30,8 +29,7 @@ void carregando(int num_porcent_from, int num_porcent_to, char mensagem[31]){
                "\n| %-31s |"
                "\n|=================================|\n", mensagem);
 
-        Sleep(80);
-
+        Sleep(100);
 
         if (i < (num_porcent_to - num_porcent_from)/3)
             printf("\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K");
@@ -39,5 +37,11 @@ void carregando(int num_porcent_from, int num_porcent_to, char mensagem[31]){
 }
 
 int main(){
-    carregando(0, 21, "Compilando sistema principal"); // mensagem deve ter até 31 caracteres
+    carregando(0, 21, "Primeira mensagem"); // mensagem deve ter até 31 caracteres
+    Sleep(800);
+    carregando(21, 54, "segunda mensagem"); // é ideal que a porcentagem seja multiplo de 3
+    Sleep(300);
+    carregando(54, 81, "terceira mensagem");
+    Sleep(500);
+    carregando(81, 100, "quarta mensagem");
 }
