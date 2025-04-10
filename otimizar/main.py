@@ -1,6 +1,8 @@
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
+from bs4 import BeautifulSoup
 import feedparser
+import requests
 
 
 def Menu():
@@ -18,33 +20,83 @@ def Menu():
 class Noticias:
     def __init__(self):
         self.conjur = feedparser.parse("https://www.conjur.com.br/rss.xml")
-        self.data = self.DataDaPesquisa()
-        self.plataforma = self.PlataformaDePesquisa()
-
-    def DataDaPesquisa(self):
-        while True:
-            os.system('cls')
-            print('Data das noticias:\n'
-                '1 - Hoje\n'
-                '2 - Ontem\n'
-                '3 - Semana\n'
-                '4 - Mes\n'
-                '5 - Qualquer\n')
-            data = int(input('Escolha uma opcao: '))
-
-            if data == 1:
-                return datetime.today()
-            elif data == 2:
-                return datetime.today() - datetime.timedelta(days=1)
+        self.PlataformaDePesquisa()            
 
     def PlataformaDePesquisa(self):
         while True:
             os.system('cls')
-            print('Plataforma:\n')
+            print('Plataforma:\n'
+                  '1 - Conjur\n')
             plataforma = int(input('Escolha uma opcao: '))
 
-    def ExibirNoticias(self):
-        pass
+            if plataforma == 1:
+                self.ExibirNoticiasConjur()
+                break
+
+    def ExibirNoticiasConjur(self):
+        os.system('cls')
+        for contador, noticia in enumerate(self.conjur.entries, 1):
+            print(f"Noticia numero {contador}\n"
+                    f"{noticia.title}\n"
+                    f"{noticia.published}\n"
+                    f"{"=" * 100}\n\n")
+        
+        print("digite 0 para voltar ao menu ou o numero da noticia para visualiza-la\n")
+        opcao = int(input('Escolha uma opcao: '))
+
+        if opcao == 0:
+            return
+        elif opcao >= 1 and opcao <= len(self.conjur.entries):
+            self.ExibirNoticiasConjurResumida(opcao)
+
+    def ExibirNoticiasConjurResumida(self, opcao):
+        titulo = self.conjur.entries[opcao - 1].title
+
+        resumo_html = self.conjur.entries[opcao - 1].description
+        resumo = BeautifulSoup(resumo_html, 'html.parser').get_text()
+
+        data_completa = self.conjur.entries[opcao - 1].published_parsed
+        data = f"{data_completa[2]:02}/{data_completa[1]:02}/{data_completa[0]:02}"
+
+        link = self.conjur.entries[opcao - 1].link
+
+        os.system('cls')
+        print(f"Titulo: {titulo}\n\n"
+                f"Resumo: {resumo}\n\n"
+                f"Data: {data}\n"
+                f"{"=" * 100}\n\n"
+                f"Link: {link}\n\n")
+        
+        print("1 - Ler matéria completa\n"
+              "2 - Construir story\n"
+              "3 - Rever noticias\n"
+              "4 - Voltar ao menu\n")
+        opcao = int(input('Escolha uma opcao: '))
+
+        if opcao == 1:
+            self.ExibirNoticiasConjurCompleta(opcao)
+        elif opcao == 2:
+            pass
+        elif opcao == 3:
+            self.ExibirNoticiasConjur()
+        elif opcao == 4:
+            return
+        
+    def ExibirNoticiasConjurCompleta(self, opcao):
+        conteudo_html = requests.get(self.conjur.entries[opcao - 1].link).text
+        
+        conteudo_completo = BeautifulSoup(conteudo_html, 'html.parser')
+        conteudo_corpo = conteudo_completo.find('div', class_='the_content')
+
+        os.system('cls')  # ou 'clear' no Linux/macOS
+
+        elementos = conteudo_corpo.find_all(['p', 'h2'])
+
+        for elemento in elementos:
+            texto = elemento.get_text(strip=True)
+            if texto:
+                print(texto, "\n")
+
 
 
 def main():
@@ -52,7 +104,6 @@ def main():
 
     if dir == 1:
         noticias = Noticias()
-        noticias.ExibirNoticias()
 
     elif dir == 2:
         pass
@@ -62,4 +113,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    ExibirNoticiasConjurCompleta()
