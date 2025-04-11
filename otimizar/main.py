@@ -20,6 +20,7 @@ def Menu():
 class Noticias:
     def __init__(self):
         self.conjur = feedparser.parse("https://www.conjur.com.br/rss.xml")
+        self.noticia = 0
         self.PlataformaDePesquisa()            
 
     def PlataformaDePesquisa(self):
@@ -46,19 +47,20 @@ class Noticias:
 
         if opcao == 0:
             return
-        elif opcao >= 1 and opcao <= len(self.conjur.entries):
-            self.ExibirNoticiasConjurResumida(opcao)
+        elif opcao >= 1 and opcao <= 10:
+            self.noticia = opcao - 1
+            self.ExibirNoticiasConjurResumida()
 
-    def ExibirNoticiasConjurResumida(self, opcao):
-        titulo = self.conjur.entries[opcao - 1].title
+    def ExibirNoticiasConjurResumida(self):
+        titulo = self.conjur.entries[self.noticia].title
 
-        resumo_html = self.conjur.entries[opcao - 1].description
+        resumo_html = self.conjur.entries[self.noticia].description
         resumo = BeautifulSoup(resumo_html, 'html.parser').get_text()
 
-        data_completa = self.conjur.entries[opcao - 1].published_parsed
+        data_completa = self.conjur.entries[self.noticia].published_parsed
         data = f"{data_completa[2]:02}/{data_completa[1]:02}/{data_completa[0]:02}"
 
-        link = self.conjur.entries[opcao - 1].link
+        link = self.conjur.entries[self.noticia].link
 
         os.system('cls')
         print(f"Titulo: {titulo}\n\n"
@@ -74,7 +76,7 @@ class Noticias:
         opcao = int(input('Escolha uma opcao: '))
 
         if opcao == 1:
-            self.ExibirNoticiasConjurCompleta(opcao)
+            self.ExibirNoticiasConjurCompleta()
         elif opcao == 2:
             pass
         elif opcao == 3:
@@ -82,8 +84,8 @@ class Noticias:
         elif opcao == 4:
             return
         
-    def ExibirNoticiasConjurCompleta(self, opcao):
-        conteudo_html = requests.get(self.conjur.entries[opcao - 1].link).text
+    def ExibirNoticiasConjurCompleta(self):
+        conteudo_html = requests.get(self.conjur.entries[self.noticia].link).text
         
         conteudo_completo = BeautifulSoup(conteudo_html, 'html.parser')
         conteudo_corpo = conteudo_completo.find('div', class_='the_content')
@@ -100,18 +102,18 @@ class Noticias:
 
 
 def main():
-    dir = Menu()
+    while True:
+        dir = Menu()
 
-    if dir == 1:
-        noticias = Noticias()
+        if dir == 1:
+            noticias = Noticias()
 
-    elif dir == 2:
-        pass
+        elif dir == 2:
+            pass
 
-    elif dir == 3:
-        pass
+        elif dir == 3:
+            break
 
 
 if __name__ == '__main__':
-    # main()
-    ExibirNoticiasConjurCompleta()
+    main()
