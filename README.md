@@ -21,16 +21,13 @@ Além de servir como instrumento de estudo, os projetos aqui apresentados buscam
 ## Status de Conclusão
 o significado dos emojis encontra-se no final desta documentação.  
   
-🚧 automacao_de_curadoria_de_conteudo  
-🚧 persmane_app  
-🚧 controle_de_estudos_app  
-  
-📝 meu_primeiro_codigo  
-  
-❔ automacao_de_contas  
-  
-💤 sites  
-💤 supermercado_app  
+- [🚧] automacao_de_curadoria_de_conteudo
+- [🚧] Persmane
+- [🚧] controle_de_estudos
+- [📝] meu_primeiro_codigo
+- [❔] automacao_de_contas
+- [💤] Sites
+- [💤] Supermercado
 
 ## Como Usar
 
